@@ -96,7 +96,7 @@
     "sourcemap-istanbul-instrumenter-loader": "0.2.0",
     "stripcomment-loader": "0.1.0",
     "style-loader": "0.23.1",
-    "swagger-ui": "2.2.10",
+    "swagger-ui": "3.23.11",
     "generator-jhipster-nav-element": "2.2.0",
     "generator-jhipster-testcontainers": "1.0.0",
     "generator-codegen": "0.3.1",
