@@ -1,9 +1,13 @@
 package com.papi.spotifyreader.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A Artist.
@@ -41,6 +45,14 @@ public class Artist implements Serializable {
 
     @Column(name = "url")
     private String url;
+
+    @ManyToMany
+    @JoinTable(
+        name = "artists_to_albums",
+        joinColumns = @JoinColumn(name = "artist_id"),
+        inverseJoinColumns = @JoinColumn(name = "album_id"))
+    @JsonIgnore
+    private Set<Album> albums = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -142,6 +154,31 @@ public class Artist implements Serializable {
         this.url = url;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
+
+    public Set<Album> getAlbums() {
+        return albums;
+    }
+
+    public Artist albums(Set<Album> albums) {
+        this.albums = albums;
+        return this;
+    }
+
+    public Artist addAlbum(Album album) {
+        this.albums.add(album);
+        album.getArtists().add(this);
+        return this;
+    }
+
+    public Artist removeAlbum(Album album) {
+        this.albums.remove(album);
+        album.getArtists().remove(this);
+        return this;
+    }
+
+    public void setAlbums(Set<Album> albums) {
+        this.albums = albums;
+    }
 
     @Override
     public boolean equals(Object o) {

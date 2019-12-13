@@ -16,6 +16,10 @@ import sessions, { SessionsState } from 'app/modules/account/sessions/sessions.r
 import artist, {
   ArtistState
 } from 'app/entities/artist/artist.reducer';
+// prettier-ignore
+import album, {
+  AlbumState
+} from 'app/entities/album/album.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -30,6 +34,7 @@ export interface IRootState {
   readonly settings: SettingsState;
   readonly sessions: SessionsState;
   readonly artist: ArtistState;
+  readonly album: AlbumState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -46,6 +51,7 @@ const rootReducer = combineReducers<IRootState>({
   settings,
   sessions,
   artist,
+  album,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar
 });
