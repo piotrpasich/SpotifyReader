@@ -181,7 +181,7 @@ public class Album implements Serializable {
         track.setAlbum(null);
         return this;
     }
-    
+
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

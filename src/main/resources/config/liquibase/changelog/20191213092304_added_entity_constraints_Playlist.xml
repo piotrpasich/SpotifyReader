@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Playlist.
+    -->
+    <changeSet id="20191213092304-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="playlist_id"
+                                 baseTableName="playlist_tracks"
+                                 constraintName="fk_playlist_tracks_playlist_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="playlist"/>
+
+        <addForeignKeyConstraint baseColumnNames="tracks_id"
+                                 baseTableName="playlist_tracks"
+                                 constraintName="fk_playlist_tracks_tracks_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="track"/>
+        
+    </changeSet>
+</databaseChangeLog>

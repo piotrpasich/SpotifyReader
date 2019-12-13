@@ -24,6 +24,10 @@ import album, {
 import track, {
   TrackState
 } from 'app/entities/track/track.reducer';
+// prettier-ignore
+import playlist, {
+  PlaylistState
+} from 'app/entities/playlist/playlist.reducer';
 /* jhipster-needle-add-reducer-import - JHipster will add reducer here */
 
 export interface IRootState {
@@ -40,6 +44,7 @@ export interface IRootState {
   readonly artist: ArtistState;
   readonly album: AlbumState;
   readonly track: TrackState;
+  readonly playlist: PlaylistState;
   /* jhipster-needle-add-reducer-type - JHipster will add reducer type here */
   readonly loadingBar: any;
 }
@@ -58,6 +63,7 @@ const rootReducer = combineReducers<IRootState>({
   artist,
   album,
   track,
+  playlist,
   /* jhipster-needle-add-reducer-combine - JHipster will add reducer here */
   loadingBar
 });
