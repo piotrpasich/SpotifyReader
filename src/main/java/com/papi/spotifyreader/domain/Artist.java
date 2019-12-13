@@ -54,6 +54,15 @@ public class Artist implements Serializable {
     @JsonIgnore
     private Set<Album> albums = new HashSet<>();
 
+    @ManyToMany
+    @JoinTable(
+        name = "artists_to_tracks",
+        joinColumns = @JoinColumn(name = "artist_id"),
+        inverseJoinColumns = @JoinColumn(name = "track_id"))
+    @JsonIgnore
+    private Set<Track> tracks = new HashSet<>();
+
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -178,6 +187,32 @@ public class Artist implements Serializable {
 
     public void setAlbums(Set<Album> albums) {
         this.albums = albums;
+    }
+
+    // tracks
+    public Set<Track> getTracks() {
+        return tracks;
+    }
+
+    public Artist tracks(Set<Track> tracks) {
+        this.tracks = tracks;
+        return this;
+    }
+
+    public Artist addTrack(Track track) {
+        this.tracks.add(track);
+        track.getArtists().add(this);
+        return this;
+    }
+
+    public Artist removeTrack(Track track) {
+        this.albums.remove(track);
+        track.getArtists().remove(this);
+        return this;
+    }
+
+    public void setTracks(Set<Track> tracks) {
+        this.tracks = tracks;
     }
 
     @Override
